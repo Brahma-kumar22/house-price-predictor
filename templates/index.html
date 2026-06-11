@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        text-align: center;
+        border: none;
+        outline: none;
+    }
+
+    .MainContainer {
+        width: 100%;
+        height: 120vh;
+        background-image: url('https://img.freepik.com/free-photo/luxurious-villa-with-modern-architectural-design_23-2151694144.jpg?t=st=1730046373~exp=1730049973~hmac=6e49509213ccc27736663fcb1e43c3cf87fb404714dc26e791b8979757a9f39d&w=996');
+        background-size: cover;
+    }
+    
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        background-color: white;
+        width: 350px;
+        height: 700px;
+        background: transparent;
+        backdrop-filter: blur(20px); 
+        border-radius: 15px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        margin-left: 70px;
+    }
+
+    input {
+        padding: 10px;
+        border-radius: 12px;
+    }
+</style>
+<body>
+   <div class="MainContainer">
+    <h1 style="font-size: 50px; padding-top: 50px">House Price Prediction</h1>
+    <form action="/predict" method="post">
+        <div class="container" style="margin-top: 60px; margin-bottom: 40px;">
+            <label for="size">Size (sq ft):</label>
+        <input type="text" id="size" name="size" required>
+        <label for="bedrooms">Number of Bedrooms:</label>
+        <input type="number" id="bedrooms" name="bedrooms" required>
+        <label for="bathrooms">Number of Bathrooms:</label>
+        <input type="number" id="bathrooms" name="bathrooms" required>
+        <label for="city">City:</label>
+        <select style="padding: 10px; border-radius: 12px; width: 190px" id="city" name="city">
+            <option value="Select">Select</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Bengaluru">Bengaluru</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Kolkata">Kolkata</option>
+            <option value="Pune">Pune</option>
+            <option value="Ahmedabad">Ahmedabad</option>
+            <option value="Jaipur">Jaipur</option>
+            <option value="Surat">Surat</option>
+            <option value="Lucknow">Lucknow</option>
+            <option value="Nagpur">Nagpur</option>
+            <option value="Indore">Indore</option>
+            <option value="Thane">Thane</option>
+            <option value="Bhopal">Bhopal</option>
+            <option value="Visakhapatnam">Visakhapatnam</option>
+            <option value="Patna">Patna</option>
+            <option value="Vadodara">Vadodara</option>
+            <option value="vijayawada">vijayawada</option>
+            <option value="Rajamahendravaram">Rajamahendravaram</option>
+            <option value="Guntur">Guntur</option>
+        </select>
+    <label for="budget">Budget Category:</label>
+    <select style="padding: 10px; border-radius: 12px; width: 190px" id="budget" name="budget">
+        <option value="Select">Select</option>
+        <option value="high">Premium</option>
+        <option value="medium">Mid range</option>
+        <option value="low">Low Budget</option>
+    </select><br>
+        <input type="submit" value="Predict">
+    </form>
+    {% if prediction_text %}
+        <h2>{{ prediction_text }}</h2>
+    {% endif %}
+</div>
+   </div>
+</body>
+</html>
